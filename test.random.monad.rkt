@@ -32,3 +32,11 @@
     { first.prng.script & run-prng & show & println }
     { many.dice                  & run-prng & show & println }
 ))
+
+(def a (do
+            (set-seed 1337)                 ; the default is 1, we just set it to 1337 instead here
+            [i1 <- (random-integer 1 7)]    ; one roll of a dice
+            [d1 <- random-double]           ; real number between 0 and 1
+            (pure {i1 tuple d1})            ))
+
+(main { a & run-prng & show & println })
